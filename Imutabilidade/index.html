@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redux</title>
+  <script src="./immer.umd.production.min.js"></script>
+  <script src="./redux.min.js"></script>
+</head>
+<body>
+  <div id="teste" style="background:green; width: 80px ; height: 50px;">
+
+  </div>
+  <script>
+    const initialState = {
+      nome: 'jefferson',
+      idade: 23
+    }
+  const reducer = immer.produce((state, action)=>{
+    switch (action.type){
+      case 'CHANGE_NAME':
+        state.nome = action.payloader;
+        break
+      case 'CHANGE_AGE':
+        state.idade = action.payloader;
+
+ 
+    }
+  },initialState)
+
+  const obj1 ={
+    anime:'one piece',
+    personagem:'zoro'
+  }
+  const obj2 = immer.produce(obj1,(draft)=>{
+    draft.personagem='sanji'
+  })
+  console.log(obj2)
+  console.log(obj2 === obj1)
+  
+  const store = Redux.createStore(reducer,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())  
+
+  store.dispatch({type:"CHANGE_NAME",payloader:'mirela'})
+  store.dispatch({type:"CHANGE_AGE",payloader:24})
+
+  store.dispatch({type:"CHANGE_NAME",payloader:'Jeniffer'})
+  store.dispatch({type:"CHANGE_AGE",payloader:21})
+
+
+ 
+
+
+
+  </script>
+</body>
+</html>

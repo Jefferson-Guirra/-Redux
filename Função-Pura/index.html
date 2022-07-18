@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redux</title>
+  <script src="./redux.min.js"></script>
+</head>
+<body>
+  <div id="teste" style="background:green; width: 80px ; height: 50px;">
+
+  </div>
+  <script>
+  function reducer (state = 0 , action){
+    switch (action.type){
+      case 'CHANGE_WIDTH':
+        return {...state,width:action.payloader}
+      case 'CHANGE_HEIGHT':
+        return {...state,height:action.payloader}
+      default:
+        return state
+    }
+  }
+  
+  const store = Redux.createStore(reducer,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())  
+  function render(){
+    const state = store.getState()
+    const div = document.querySelector('#teste')
+    state.width ?  div.style.width = state.width +'px' : div.style.height = state.height +'px'
+
+    
+  }
+  store.subscribe(render)
+  store.dispatch({type:"CHANGE_HEIGHT",payloader:200})
+  store.dispatch({type:"CHANGE_HEIGHT",payloader:150})
+  store.dispatch({type:"CHANGE_WIDTH",payloader:200})
+  store.dispatch({type:"CHANGE_WIDTH",payloader:80})
+
+
+
+  </script>
+</body>
+</html>
