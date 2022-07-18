@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redux</title>
+  <script src="./redux.min.js"></script>
+</head>
+<body>
+  <h1>Total: <span id="total"></span> </h1>
+  <button>somar</button>
+  <button id="abrir">abrir</button>
+  <button id="fechar">fechar</button>
+  <script>
+  
+  
+  
+  //CONSTANTES
+    const INCREMENTAR = 'INCREMENTAR'
+    const SOMAR = 'SOMAR'
+    const initialState = 10
+  
+  
+    //ACTION CREATOR
+    function somar(payload){
+      return {type:SOMAR,payload}
+    }
+
+    function incrementar(){
+      return {type:INCREMENTAR}
+    }
+    function contador(state = initialState , action){
+      switch (action.type){
+        case SOMAR :
+          return state + action.payload
+        case INCREMENTAR :
+          return state + 1
+        default : 
+          return state
+        
+      }
+
+    }
+
+
+    function modal(state = false , action){
+      switch (action.type){
+        case 'abrir' :
+          return true
+        case 'fechar' :
+          return false
+        default : 
+          return state
+        
+      }
+
+    }
+
+    const reducer = Redux.combineReducers({contador,modal})
+    const store = Redux.createStore(reducer)
+    function render(){    
+        const {modal,contador} = store.getState()
+        const total = document.getElementById('total')
+        total.innerText = contador
+        if(modal){
+          total.style.display='inline-block'
+        }
+        else{
+          total.style.display='none'
+        }
+    
+    }
+    render()
+    store.subscribe(render)
+    store.dispatch(somar(10))
+    
+    const unsubscribe = store.subscribe(()=>{
+      console.log('oi')
+    })
+    unsubscribe()
+    
+    
+    
+    const btn = document.querySelector('button')
+    btn.addEventListener('click',()=>store.dispatch(incrementar()))
+    const btnopen = document.querySelector('#abrir')
+    btnopen.addEventListener('click',()=>store.dispatch({type:'abrir'}))
+    const btnclose = document.querySelector('#fechar')
+    btnclose.addEventListener('click',()=>store.dispatch({type:'fechar'}))
+
+  </script>
+</body>
+</html>
