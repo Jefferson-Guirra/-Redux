@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redux</title>
+  <script src="./immer.umd.production.min.js"></script>
+  <script src="./redux.min.js"></script>
+</head>
+<body>
+  <div>
+    <p></p>
+  </div>
+  <script type="module">
+    import store from './store/storeConfig.js'
+    import {aluno,incrementar,reduzir,modificar} from './store/aluno.js'
+    import {completarAula,completarCurso,resetarCurso} from './store/aulas.js'
+    
+    function render(){
+      const {aluno,aula} = store.getState()
+      const dadosAluno = document.querySelector('p')
+      dadosAluno.innerText = `aluno: ${aluno.nome}. \n email: ${aluno.email}. \n dias: ${aluno.diasRestantes} dias restantes.`
+
+    }
+    render()
+    store.subscribe(render)
+    
+    
+    
+    store.dispatch(modificar('jefferson@gmail.com'))
+    store.dispatch(incrementar())
+    store.dispatch(incrementar())
+    store.dispatch(completarAula(3))
+
+
+  
+
+
+
+  </script>
+</body>
+</html>
