@@ -1,0 +1,30 @@
+.component{
+  margin-bottom: 2rem;
+  max-height: 20rem;
+  width: 400px;
+  
+  
+}
+
+.input{
+  border: 1px solid #eee;
+  display: block;
+  font-size: 1rem;
+  border-radius: .4rem;
+  padding: 0.5rem;
+  transition: .2s;
+  background: #eee;
+  
+  
+}
+.input:hover,
+.input:focus{
+  outline: none;
+  border-color: black;
+  
+}
+@media (max-width:500px){
+  .component{
+    max-width: 250px;
+  }
+}

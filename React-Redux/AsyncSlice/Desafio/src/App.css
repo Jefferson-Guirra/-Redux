@@ -1,0 +1,96 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+html {
+  -webkit-tap-highlight-color: rgba(238, 238, 238, 0.342); /*pode ser transparent também*/
+}
+
+label{
+  display: block;
+  margin-bottom: 0.2rem;
+  font-size: 1rem;
+}
+input{
+  display: block;
+  width: 100%;
+}
+
+
+
+.btn{
+  border: none;
+  cursor: pointer;
+  padding: 0.6rem 1.2rem;
+  color:white;
+  background-color: #fb1;
+  border-radius: .2rem;
+  margin-top: 0.8rem;
+  font-weight: bold;
+}
+.content{
+  overflow: hidden;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  max-width: 80%;
+  height: fit-content;
+  padding: 1rem;
+  border-radius: .4rem;
+  display: flex;
+  flex-direction: column;
+  
+}
+
+
+.content::before{
+  content: '';
+  width: 64px;
+  height: 64px;
+  background: url('./Assets/dogs-1-64.png') no-repeat  center center ;
+  display: block;
+  position: relative;
+  left: 40%;
+  top: -12px;
+  margin-bottom: 2rem;
+  
+  background-size: cover;
+
+}
+
+.content.contentActive::before{
+  border:10px solid #fb1;
+  border-top-color: transparent;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  animation: spin .4s infinite linear;
+  background: none;
+  background-color: none;
+
+}
+
+
+
+.scale{
+  transform: translate3d(-30px,0,0);
+  opacity: 0;
+  animation: scale .4s forwards;
+}
+img{
+  width: 100%;
+}
+@keyframes spin{
+  to{
+    transform: rotate(360deg);
+  }
+}
+@keyframes scale{
+  to{
+    transform: initial;
+    opacity: initial;
+  }
+}

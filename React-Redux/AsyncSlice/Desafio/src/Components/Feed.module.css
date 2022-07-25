@@ -1,0 +1,99 @@
+.img{
+  display: inline-block;
+  width: 64px;
+  height: 64px;
+  border-radius: .4rem;
+  overflow: hidden;
+  
+}
+.section{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%,-50%,0);
+  overflow: hidden;
+  max-width: 75%;
+  background: #fb1;
+  border-radius: .4rem;
+  padding: 0.8rem;
+  text-align: center;
+  
+}
+
+.container{
+  background: #eee;
+  list-style: none;
+  border-radius: .4rem;
+  position: relative;
+  width: 25rem;
+
+}
+
+.content{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.386);
+  padding: .5rem .8rem;
+  
+}
+.btnPrev{
+
+  transform: rotate(180deg);
+
+}
+
+
+.btnContent{
+  height: 5rem;
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  
+}
+
+.btn{
+  border: none;
+  cursor: pointer;
+  padding: 0.6rem 1.2rem;
+  color:white;
+  background-color: transparent;
+  border-radius: .2rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+ 
+}
+
+.containerBox{
+  position: relative;
+  margin-top: 1rem;
+}
+
+.logout{
+  display: block;
+  cursor: pointer;
+  position: absolute;
+  left: 93%;
+  bottom: 2px;
+  
+}
+.btnContent .btn:focus{
+  outline: none;
+  box-shadow: 0 0 0 0;
+  background: transparent;
+}
+.logout svg >*{
+  fill: #764701;
+}
+@media (max-width:500px){
+  .container{
+    max-width: 260px;
+  }
+}
+
+
